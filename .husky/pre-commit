@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo -e "\nRun eslint\n"
+
+npx lint-staged --concurrent false

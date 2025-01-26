@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo esta en prepare
+if ! git rev-parse -q --no-revs --verify MERGE_HEAD # Ensure that GUI won't appear in case of merge commit
+then
+  exec < /dev/tty && npm run cm --hook || true # Execute the cz command with the flag indicating execution within a hook
+fi

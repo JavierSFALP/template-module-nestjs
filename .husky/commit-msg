@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$CI" != "true" ]; then
+  echo -e "\ncheking commit format\n"
+  npx --no -- commitlint --edit $1
+fi
+
+echo PASS

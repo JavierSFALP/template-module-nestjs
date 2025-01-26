@@ -1,0 +1,8 @@
+#!/bin/sh
+echo -e "\n testing \n"
+npm test
+
+# If tests pass, run semantic-release
+if [ $? -eq 0 ]; then
+  HUSKY=0 npx semantic-release --no-ci
+fi
