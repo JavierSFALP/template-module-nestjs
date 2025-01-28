@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   types: [
     { value: 'feat', name: 'feat:     A new feature' },
@@ -24,7 +25,7 @@ module.exports = {
     { value: 'WIP', name: 'WIP:      Work in progress' },
   ],
 
-  // Here you can define specific scopes for the commit message
+  // Specific scopes for the commit message
   scopes: [
     { name: 'husky' },
     { name: 'commitizen' },

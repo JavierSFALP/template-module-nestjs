@@ -1,4 +1,5 @@
-export default {
+// eslint-disable-next-line no-undef
+module.exports = {
   "branches": [
     'feature/changelog-docs',
     '+([0-9])?(.{+([0-9]),x}).x',
