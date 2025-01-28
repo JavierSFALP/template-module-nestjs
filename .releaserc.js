@@ -2,6 +2,7 @@
 module.exports = {
   "branches": [
     'feature/changelog-docs',
+    'branch-1.x.x',
     '+([0-9])?(.{+([0-9]),x}).x',
     'main', 
     'next', 
