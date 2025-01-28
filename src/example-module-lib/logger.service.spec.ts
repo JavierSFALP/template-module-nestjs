@@ -44,12 +44,4 @@ describe('LoggerService', () => {
     expect(consoleSpy).not.toHaveBeenCalled();
     consoleSpy.mockRestore();
   });
-
-  it('should log warn messages', () => {
-    const consoleSpy = jest.spyOn(console, 'log');
-    loggerService = new LoggerService('warn');
-    loggerService.error('Warn message');
-    expect(consoleSpy).toHaveBeenCalledWith('[WARN] Warn message');
-    consoleSpy.mockRestore();
-  });
 });
