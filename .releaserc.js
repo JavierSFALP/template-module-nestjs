@@ -31,22 +31,22 @@ export default {
       '@semantic-release/npm',
       {
         npmPublish: true,
-        "tarballDir": "packages"
+        "tarballDir": "pkgs"
       },
     ],
     [
 			"@semantic-release/github",
 			{
-				"assets": "packages/*.tgz"
+				"assets": "pkgs/*.tgz"
 			}
 		],
-    [
-      '@semantic-release/git',
-      {
-        assets: ['release/CHANGELOG.md', 'package.json'],
-        message:
-          'chore(release): ${nextRelease.version} [skip ci]  ${nextRelease.notes}',
-      },
-    ]
+    // [
+    //   '@semantic-release/git',
+    //   {
+    //     assets: ['release/CHANGELOG.md', 'package.json'],
+    //     message:
+    //       'chore(release): ${nextRelease.version} [skip ci]  ${nextRelease.notes}',
+    //   },
+    // ]
   ],
 }

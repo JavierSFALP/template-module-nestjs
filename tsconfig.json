@@ -18,22 +18,10 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "example-lib/example-lib": [
-        "libs/example-lib/src"
-      ],
-      "example-lib/example-lib/*": [
-        "libs/example-lib/src/*"
-      ],
-      "falp/test": [
-        "libs/test/src"
-      ],
-      "falp/test/*": [
-        "libs/test/src/*"
-      ],
-      "@falp/test1": [
+      "@jstest/testjsfalp": [
         "libs/test1/src"
       ],
-      "@falp/test1/*": [
+      "@jstest/testjsfalp/*": [
         "libs/test1/src/*"
       ]
     }

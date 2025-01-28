@@ -1,6 +1,6 @@
 {
-  "name": "template-module-nestjs",
-  "version": "1.3.0",
+  "name": "@jstest/testjsfalp",
+  "version": "1.0.0",
   "description": "",
   "author": "",
   "license": "UNLICENSED",
@@ -111,10 +111,7 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^example-lib/example-lib(|/.*)$": "<rootDir>/libs/example-lib/src/$1",
-      "^@app/test(|/.*)$": "<rootDir>/libs/test/src/$1",
-      "^falp/test(|/.*)$": "<rootDir>/libs/test/src/$1",
-      "^@falp/test1(|/.*)$": "<rootDir>/libs/test1/src/$1"
+      "^@jstest/testjsfalp(|/.*)$": "<rootDir>/libs/test1/src/$1"
     }
   },
   "config": {
