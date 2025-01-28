@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Release package
 
 on:
   push:
@@ -37,6 +37,7 @@ jobs:
           node-version: '20.x'
           registry-url: ${{ secrets.GH_REGISTRY }}
       - run: npm ci
+      - run: npm run build
       - name: Release semantic-release
         run: npx semantic-release
         env:

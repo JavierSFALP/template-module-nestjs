@@ -19,10 +19,10 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@jstest/testjsfalp": [
-        "libs/test1/src"
+        "libs/example-lib/src"
       ],
       "@jstest/testjsfalp/*": [
-        "libs/test1/src/*"
+        "libs/example-lib/src/*"
       ]
     }
   },
