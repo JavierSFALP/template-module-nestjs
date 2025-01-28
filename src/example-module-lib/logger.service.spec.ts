@@ -45,11 +45,11 @@ describe('LoggerService', () => {
     consoleSpy.mockRestore();
   });
 
-  it('should log error messages', () => {
+  it('should log warn messages', () => {
     const consoleSpy = jest.spyOn(console, 'log');
-    loggerService = new LoggerService('error');
-    loggerService.error('Error message');
-    expect(consoleSpy).toHaveBeenCalledWith('[ERROR] Error message');
+    loggerService = new LoggerService('warn');
+    loggerService.error('Warn message');
+    expect(consoleSpy).toHaveBeenCalledWith('[WARN] Warn message');
     consoleSpy.mockRestore();
   });
 });
