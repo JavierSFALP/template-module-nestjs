@@ -110,7 +110,7 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@jstest/testjsfalp(|/.*)$": "<rootDir>/libs/test1/src/$1"
+      "^@jstest/testjsfalp(|/.*)$": "<rootDir>/libs/examplee-lib/src/$1"
     }
   },
   "config": {

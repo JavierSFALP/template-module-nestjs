@@ -44,4 +44,12 @@ describe('LoggerService', () => {
     expect(consoleSpy).not.toHaveBeenCalled();
     consoleSpy.mockRestore();
   });
+
+  // it('should log error messages', () => {
+  //   const consoleSpy = jest.spyOn(console, 'log');
+  //   loggerService = new LoggerService('error');
+  //   loggerService.error('Error message');
+  //   expect(consoleSpy).toHaveBeenCalledWith('[ERROR] Error message');
+  //   consoleSpy.mockRestore();
+  // });
 });

@@ -8,13 +8,13 @@
     "builder": "tsc"
   },
   "projects": {
-    "test1": {
+    "example-lib": {
       "type": "library",
-      "root": "libs/test1",
+      "root": "libs/example-lib",
       "entryFile": "index",
-      "sourceRoot": "libs/test1/src",
+      "sourceRoot": "libs/example-lib/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/test1/tsconfig.lib.json"
+        "tsConfigPath": "libs/example-lib/tsconfig.lib.json"
       }
     }
   }
