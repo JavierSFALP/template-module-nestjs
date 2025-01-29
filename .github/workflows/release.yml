@@ -9,6 +9,7 @@ on:
       - develop
       - "*.x"
       - branch-1.0.0
+      - feature/*
 permissions:
   contents: read # for checkout
 jobs:
