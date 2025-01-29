@@ -2,7 +2,7 @@
 module.exports = {
   "branches": [
     'feature/changelog-docs',
-    'branch-1.0.0.',
+    'branch-1.1.0',
     'main'
   ],
   "plugins": [
