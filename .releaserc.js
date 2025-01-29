@@ -9,44 +9,44 @@ module.exports = {
     [
       '@semantic-release/commit-analyzer',
       {
-        preset: 'conventionalcommits',
+        "preset": 'conventionalcommits',
       },
     ],
     [
       '@semantic-release/release-notes-generator',
       {
-        preset: 'conventionalcommits',
+        "preset": 'conventionalcommits',
       },
     ],
     [
       '@semantic-release/changelog',
       {
-        changelogFile: 'release/CHANGELOG.md',
+        "changelogFile": 'release/CHANGELOG.md',
       },
     ],
     [
       '@semantic-release/exec',
       {
-        publishCmd: 'echo changelog',
+        "publishCmd": 'echo changelog',
       },
     ],
     [
       '@semantic-release/npm',
       {
-        npmPublish: false,
-        tarballDir: 'dist'
+        "npmPublish": false,
+        "tarballDir": 'dist'
       },
     ],
     [
       '@semantic-release/exec',
       {
-        publishCmd: 'echo npm',
+        "publishCmd": 'echo npm',
       },
     ],
     [
 			"@semantic-release/github",
 			{
-				assets: 'dist/*.tgz'
+				"assets": 'dist/*.tgz'
 			}
 		]
   ],
