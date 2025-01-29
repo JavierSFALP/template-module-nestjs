@@ -3,12 +3,7 @@ module.exports = {
   "branches": [
     'feature/changelog-docs',
     'branch-1.0.0.',
-    '+([0-9])?(.{+([0-9]),x}).x',
-    'main', 
-    'next', 
-    'next-major', 
-    {name: 'beta', prerelease: true}, 
-    {name: 'alpha', prerelease: true}
+    'main'
   ],
   "plugins": [
     [
