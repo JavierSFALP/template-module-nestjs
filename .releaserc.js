@@ -2,7 +2,7 @@
 module.exports = {
   "branches": [
     'feature/changelog-docs',
-    'branch-1.x.x',
+    'branch-1.0.0.',
     '+([0-9])?(.{+([0-9]),x}).x',
     'main', 
     'next', 
@@ -30,25 +30,29 @@ module.exports = {
       },
     ],
     [
+      '@semantic-release/exec',
+      {
+        publishCmd: 'echo changelog',
+      },
+    ],
+    [
       '@semantic-release/npm',
       {
         npmPublish: false,
-        "tarballDir": "pkgs"
+        tarballDir: 'dist'
+      },
+    ],
+    [
+      '@semantic-release/exec',
+      {
+        publishCmd: 'echo npm',
       },
     ],
     [
 			"@semantic-release/github",
 			{
-				"assets": "pkgs/*.tgz"
+				assets: 'dist/*.tgz'
 			}
-		],
-    // [
-    //   '@semantic-release/git',
-    //   {
-    //     assets: ['release/CHANGELOG.md', 'package.json'],
-    //     message:
-    //       'chore(release): ${nextRelease.version} [skip ci]  ${nextRelease.notes}',
-    //   },
-    // ]
+		]
   ],
 }

@@ -8,6 +8,7 @@ on:
       - beta
       - develop
       - "*.x"
+      - branch-1.0.0
 permissions:
   contents: read # for checkout
 jobs:
