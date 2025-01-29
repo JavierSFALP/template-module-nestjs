@@ -25,12 +25,6 @@ module.exports = {
       },
     ],
     [
-      '@semantic-release/exec',
-      {
-        "publishCmd": 'echo changelog',
-      },
-    ],
-    [
       '@semantic-release/npm',
       {
         "npmPublish": false,
@@ -38,16 +32,17 @@ module.exports = {
       },
     ],
     [
-      '@semantic-release/exec',
-      {
-        "publishCmd": 'echo npm',
-      },
-    ],
-    [
 			"@semantic-release/github",
 			{
 				"assets": 'dist/*.tgz'
 			}
-		]
+		],
+    [
+      "@semantic-release/exec",
+      {
+        "successCmd":
+          "echo 'RELEASED=1' >> $GITHUB_ENV && echo 'NEW_VERSION=${nextRelease.version}' >> $GITHUB_ENV",
+      },
+    ],
   ],
 }
