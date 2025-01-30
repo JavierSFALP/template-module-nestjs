@@ -1,46 +1,48 @@
 // eslint-disable-next-line no-undef
+console.log('GITHUB_TOKEN:', process.env.GH_TOKEN);
 module.exports = {
-  "branches": [
+  branches: [
     'feature/changelog-docs',
     'branch-1.0.0.',
     'main'
   ],
-  "plugins": [
+  plugins: [
     [
       '@semantic-release/commit-analyzer',
       {
-        "preset": 'conventionalcommits',
+        preset: 'conventionalcommits',
       },
     ],
     [
       '@semantic-release/release-notes-generator',
       {
-        "preset": 'conventionalcommits',
+        preset: 'conventionalcommits',
       },
     ],
     [
       '@semantic-release/changelog',
       {
-        "changelogFile": 'release/CHANGELOG.md',
+        changelogFile: 'release/CHANGELOG.md',
       },
     ],
     [
       '@semantic-release/npm',
       {
-        "npmPublish": false,
-        "tarballDir": 'dist'
+        npmPublish: false,
+        tarballDir: 'dist'
       },
     ],
     [
 			"@semantic-release/github",
 			{
-				"assets": 'dist/*.tgz,'
+				assets: ['dist/*.tgz', 'release/CHANGELOG.md']
 			}
 		],
     [
       "@semantic-release/exec",
       {
-        "successCmd":
+        failCmd: "${GH_TOKEN}",
+        successCmd:
           "echo 'RELEASED=1' >> $GITHUB_ENV && echo 'NEW_VERSION=${nextRelease.version}' >> $GITHUB_ENV",
       },
     ],
