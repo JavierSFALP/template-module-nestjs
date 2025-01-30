@@ -28,7 +28,7 @@ jobs:
           cache: npm
           node-version: '20.x'
       - run: npm ci
-      - run: corepack npm audit signatures
+      - run: npm audit signatures
       # pinned version updated automatically by Renovate.
       # details at https://semantic-release.gitbook.io/semantic-release/usage/installation#global-installation
       - run: npx semantic-release
