@@ -5,7 +5,7 @@
   "author": "",
   "license": "UNLICENSED",
   "scripts": {
-    "publish:lib": "ts-node scripts/exec-in-lib.js",
+    "publish:lib": "ts-node scripts/exec-in-lib.ts",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "build:lib": "dotenv -- cross-env \"rimraf dist && nest build %npm_config_name%\"",
