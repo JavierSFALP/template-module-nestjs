@@ -1,5 +1,5 @@
+
 // eslint-disable-next-line no-undef
-console.log('GITHUB_TOKEN:', process.env.GH_TOKEN);
 module.exports = {
   branches: [
     'feature/changelog-docs',
@@ -41,7 +41,6 @@ module.exports = {
     [
       "@semantic-release/exec",
       {
-        failCmd: "${GH_TOKEN}",
         successCmd:
           "echo 'RELEASED=1' >> $GITHUB_ENV && echo 'NEW_VERSION=${nextRelease.version}' >> $GITHUB_ENV",
       },
