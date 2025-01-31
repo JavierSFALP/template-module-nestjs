@@ -2,11 +2,18 @@
 function getLocalConfig() {
   console.log('en local')
   return  [
-    '@semantic-release/npm',
-    {
-      npmPublish: false,
-    },
-    '@semantic-release/github'
+    [
+      '@semantic-release/npm',
+      {
+        npmPublish: false,
+      },
+    ],
+    [
+      '@semantic-release/github',
+      {
+        assets: ['package.json', 'package-lock.json', 'release/CHANGELOG.md'],
+      }
+    ]
   ]
 }
 

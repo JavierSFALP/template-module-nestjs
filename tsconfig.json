@@ -18,15 +18,16 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@jstest/testjsfalp": [
+      "template-module-nestjs/example-lib": [
         "libs/example-lib/src"
       ],
-      "@jstest/testjsfalp/*": [
+      "template-module-nestjs/example-lib/*": [
         "libs/example-lib/src/*"
       ]
     }
   },
   "include": [
     "libs/**/*"
+    // "src/**/*"
   ]
 }
