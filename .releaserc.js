@@ -10,9 +10,6 @@ function getLocalConfig() {
     ],
     [
       '@semantic-release/github',
-      {
-        assets: ['package.json', 'package-lock.json', 'release/CHANGELOG.md'],
-      }
     ]
   ]
 }
@@ -23,14 +20,16 @@ function getCIConfig() {
     [
       '@semantic-release/npm',
       {
-        npmPublish: true,
+        npmPublish: false,
         tarballDir: 'pkgs'
       },
     ],
     [
 			'@semantic-release/github',
 			{
-				assets: ['pkgs/*.tgz', 'release/CHANGELOG.md']
+				assets: ['pkgs/*.tgz', 'release/CHANGELOG.md',
+          {path: 'pkgs/index.js', name: '${LIBRARY_NAME}-${nextRelease.gitTag}', label: '${LIBRARY_NAME} (${nextRelease.gitTag}) distribution'}
+        ]
 			}
 		],
   ]
