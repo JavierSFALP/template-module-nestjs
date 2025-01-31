@@ -1,4 +1,36 @@
 
+function getLocalConfig() {
+  return  [
+    '@semantic-release/npm',
+    {
+      npmPublish: false,
+    },
+    '@semantic-release/github'
+  ]
+}
+
+function getCIConfig() {
+  return [
+    [
+      '@semantic-release/npm',
+      {
+        npmPublish: true,
+        tarballDir: 'pkgs'
+      },
+    ],
+    [
+			'@semantic-release/github',
+			{
+				assets: ['pkgs/*.tgz', 'release/CHANGELOG.md']
+			}
+		],
+  ]
+}
+
+function isDryRun() {
+  return process.argv.includes('--no-ci');
+}
+
 // eslint-disable-next-line no-undef
 module.exports = {
   branches: [
@@ -25,25 +57,6 @@ module.exports = {
         changelogFile: 'release/CHANGELOG.md',
       },
     ],
-    [
-      '@semantic-release/npm',
-      {
-        npmPublish: false,
-        tarballDir: 'pkgs'
-      },
-    ],
-    [
-			"@semantic-release/github",
-			{
-				assets: ['pkgs/*.tgz', 'release/CHANGELOG.md'],
-			}
-		],
-    // [
-    //   "@semantic-release/exec",
-    //   {
-    //     successCmd:
-    //       "echo 'RELEASED=1' >> $GITHUB_ENV && echo 'NEW_VERSION=${nextRelease.version}' >> $GITHUB_ENV",
-    //   },
-    // ],
+    ...isDryRun() ? getLocalConfig() : getCIConfig()
   ],
 }
