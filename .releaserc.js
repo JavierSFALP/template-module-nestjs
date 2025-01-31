@@ -1,5 +1,6 @@
 
 function getLocalConfig() {
+  console.log('en local')
   return  [
     '@semantic-release/npm',
     {
@@ -10,6 +11,7 @@ function getLocalConfig() {
 }
 
 function getCIConfig() {
+  console.log('en ci')
   return [
     [
       '@semantic-release/npm',
@@ -28,6 +30,7 @@ function getCIConfig() {
 }
 
 function isDryRun() {
+console.log(process.argv.includes('--no-ci'))
   return process.argv.includes('--no-ci');
 }
 
