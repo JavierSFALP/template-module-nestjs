@@ -3,12 +3,6 @@ function getLocalConfig() {
   console.log('en local')
   return  [
     [
-      '@semantic-release/npm',
-      {
-        npmPublish: false,
-      },
-    ],
-    [
       '@semantic-release/github',
     ]
   ]
