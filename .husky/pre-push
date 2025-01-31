@@ -4,5 +4,5 @@ npm test
 
 # If tests pass, run semantic-release
 if [ $? -eq 0 ]; then
-  HUSKY=0 dotenv npx semantic-release --no-ci --dry-run
+  HUSKY=0 npx semantic-release --no-ci --debug
 fi

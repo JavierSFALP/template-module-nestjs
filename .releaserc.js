@@ -29,21 +29,21 @@ module.exports = {
       '@semantic-release/npm',
       {
         npmPublish: false,
-        tarballDir: 'dist'
+        tarballDir: 'pkgs'
       },
     ],
     [
 			"@semantic-release/github",
 			{
-				assets: ['dist/*.tgz', 'release/CHANGELOG.md']
+				assets: ['pkgs/*.tgz', 'release/CHANGELOG.md'],
 			}
 		],
-    [
-      "@semantic-release/exec",
-      {
-        successCmd:
-          "echo 'RELEASED=1' >> $GITHUB_ENV && echo 'NEW_VERSION=${nextRelease.version}' >> $GITHUB_ENV",
-      },
-    ],
+    // [
+    //   "@semantic-release/exec",
+    //   {
+    //     successCmd:
+    //       "echo 'RELEASED=1' >> $GITHUB_ENV && echo 'NEW_VERSION=${nextRelease.version}' >> $GITHUB_ENV",
+    //   },
+    // ],
   ],
 }
