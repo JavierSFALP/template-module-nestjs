@@ -2,6 +2,10 @@
 echo -e "\n testing \n"
 npm test
 
+# Load environment variables from .env file
+export $(grep -v '^#' .env | xargs)
+
+
 # If tests pass, run semantic-release
 if [ $? -eq 0 ]; then
   HUSKY=0 npx semantic-release --no-ci --debug
