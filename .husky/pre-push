@@ -8,5 +8,5 @@ export $(grep -v '^#' .env | xargs)
 
 # If tests pass, run semantic-release
 if [ $? -eq 0 ]; then
-  HUSKY=0 npx semantic-release --no-tag --no-ci --dry-run --debug
+  HUSKY=0 npx semantic-release --no-git-tag-version --no-ci --dry-run --debug
 fi
