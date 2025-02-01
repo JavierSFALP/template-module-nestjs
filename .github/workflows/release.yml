@@ -41,3 +41,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           REGISTRY_URL: ${{ vars.REGISTRY_URL }}
           REPOSITORY_URL: ${{ vars.REPOSITORY_URL }}
+          REGISTRY_SCOPE: ${{ vars.REGISTRY_SCOPE }}
