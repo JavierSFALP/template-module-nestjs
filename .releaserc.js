@@ -21,6 +21,9 @@ function getCIConfig() {
     ],
     [
 			'@semantic-release/github',
+			{
+				assets: ['package.json', 'pkg/*.tgz', 'release/CHANGELOG.md'],
+			}
 		],
   ]
 }
