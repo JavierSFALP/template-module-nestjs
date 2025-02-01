@@ -40,7 +40,6 @@ module.exports = {
     'branch-1.0.0.',
     'main'
   ],
-  repositoryUrl: process.env.REPOSITORY_URL,
   plugins: [
     [
       '@semantic-release/commit-analyzer',
