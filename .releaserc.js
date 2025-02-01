@@ -15,7 +15,7 @@ function getCIConfig() {
       '@semantic-release/npm',
       {
         npmPublish: true,
-        pkgRoot: ['./dist', './package.json'],
+        pkgRoot: './dist',
         tarballDir: 'pkg'
       },
     ],
