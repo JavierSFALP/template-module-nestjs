@@ -116,6 +116,10 @@
       "^@jstest/testjsfalp(|/.*)$": "<rootDir>/libs/examplee-lib/src/$1"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JavierSFALP/template-module-nestjs.git"
+  },
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
