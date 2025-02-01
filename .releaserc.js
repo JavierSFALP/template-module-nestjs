@@ -15,16 +15,12 @@ function getCIConfig() {
       '@semantic-release/npm',
       {
         npmPublish: true,
+        pkgRoot: './dist',
         tarballDir: 'pkg'
       },
     ],
     [
 			'@semantic-release/github',
-			{
-				assets: ['pkg/*.tgz', 'release/CHANGELOG.md',
-          {path: 'pkg/index.js', name: '${LIBRARY_NAME}-${nextRelease.gitTag}', label: '${LIBRARY_NAME} (${nextRelease.gitTag}) distribution'}
-        ]
-			}
 		],
   ]
 }
