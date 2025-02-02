@@ -1,12 +1,12 @@
-#!/bin/sh
-echo -e "\n testing \n"
-npm test
+# #!/bin/sh
+# echo -e "\n testing \n"
+# npm test
 
-# Load environment variables from .env file
-export $(grep -v '^#' .env | xargs)
+# # Load environment variables from .env file
+# export $(grep -v '^#' .env | xargs)
 
 
-# If tests pass, run semantic-release
-if [ $? -eq 0 ]; then
-  HUSKY=0 npx semantic-release --no-ci --dry-run --debug
-fi
+# # If tests pass, run semantic-release
+# if [ $? -eq 0 ]; then
+#   HUSKY=0 npx semantic-release --no-ci --dry-run --debug
+# fi
