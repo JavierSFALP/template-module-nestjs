@@ -27,6 +27,7 @@ function getCIConfig() {
 }
 
 function isDryRun() {
+  // eslint-disable-next-line no-undef
   return process.argv.includes('--no-ci');
 }
 

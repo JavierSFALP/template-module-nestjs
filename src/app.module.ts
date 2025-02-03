@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { LoggerModule } from './example-module-lib';
 import { ExamplelibModule as UnScopedNpmModule } from 'example-lib-1';
 import { ExamplelibModule as ScopedNpmModule} from '@javiersfalp/template-module-nodejs';
-// import { ExamplelibModule as LocalLibModule } from '@javiersfalp/template-module-nodejs-local';
+import { ExamplelibModule as LocalLibModule } from '@javiersfalp/template-module-nodejs-local';
 
 export const loggerModule = LoggerModule.register({ logLevel: 'info' });
 
@@ -13,7 +13,7 @@ export const loggerModule = LoggerModule.register({ logLevel: 'info' });
     loggerModule,
     UnScopedNpmModule,
     ScopedNpmModule,
-    // LocalLibModule
+    LocalLibModule
   ],
   controllers: [AppController],
   providers: [AppService],
