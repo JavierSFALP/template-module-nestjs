@@ -20,6 +20,7 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
+
       "@javiersfalp/template-module-nodejs-local": [
         "libs/example-lib/src"
       ],
@@ -30,6 +31,6 @@
   },
   "include": [
     "libs/**/*",
-    "src/**/*"
+    // "src/**/*"
   ]
 }
