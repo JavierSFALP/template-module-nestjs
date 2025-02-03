@@ -8,9 +8,9 @@ export class AppController {
   @Get()
   greet(): string {
     const localGreet = this.appService.greet();
-    const scopedGreet = this.appService.packageScopedGreet();
-    const unScopedGreet = this.appService.packageUnScopedGreet();
-    const message = `Local: ${localGreet} - Scoped: ${scopedGreet} - UnScoped: ${unScopedGreet}`;
-    return message;
+    // const scopedGreet = this.appService.packageScopedGreet();
+    // const unScopedGreet = this.appService.packageUnScopedGreet();
+    // const message = `Local: ${localGreet} - Scoped: ${scopedGreet} - UnScoped: ${unScopedGreet}`;
+    return localGreet;
   }
 }

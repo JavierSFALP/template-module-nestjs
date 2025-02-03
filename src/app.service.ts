@@ -19,11 +19,11 @@ export class AppService {
   //   return this.localLibService.greet();
   // }
 
-  packageNoScopedGreet(): string {
-    return this.unScopedNpmService.greet();
-  }
+  // packageUnScopedGreet(): string {
+  //   return this.unScopedNpmService.unScopedGreet();
+  // }
 
-  packageScopedGreet(): string {
-    return this.scopedNpmService.greet();
-  }
+  // packageScopedGreet(): string {
+  //   return this.scopedNpmService.scopedGreet();
+  // }
 }
