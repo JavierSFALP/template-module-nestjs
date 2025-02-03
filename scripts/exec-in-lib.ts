@@ -9,7 +9,7 @@ if (!libFolder) {
 }
 
 const libPath = path.resolve(__dirname, `../libs/${libFolder}`);
-const command = 'npm pack';
+const command = 'npm publish';
 
 exec(command, { cwd: libPath }, (error, stdout, stderr) => {
   if (error) {

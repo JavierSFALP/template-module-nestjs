@@ -6,28 +6,30 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "strict": true,
+    "esModuleInterop": true,
+    "target": "ES6",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "example-lib-1/example-lib-1": [
+      "@javiersfalp/template-module-nodejs": [
         "libs/example-lib/src"
       ],
-      "example-lib-1/example-lib-1/*": [
+      "@javiersfalp/template-module-nodejs/*": [
         "libs/example-lib/src/*"
       ]
     }
   },
   "include": [
     "libs/**/*",
-    // "src/**/*"
+    "src/**/*"
   ]
 }
