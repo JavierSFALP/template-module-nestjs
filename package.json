@@ -1,5 +1,5 @@
 {
-  "name": "@javiersfalp/template-module-nodejs",
+  "name": "example-lib-1",
   "version": "1.0.4",
   "description": "",
   "author": "",
@@ -37,7 +37,7 @@
     "release:debug": "HUSKY=0 semantic-release --debug"
   },
   "dependencies": {
-    "@javiersfalp/template-module-nodejs": "^1.0.4",
+    "@javiersfalp/template-module-nodejs": "^1.0.6",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",

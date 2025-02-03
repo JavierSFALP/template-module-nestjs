@@ -20,10 +20,10 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@javiersfalp/template-module-nodejs": [
+      "example-lib-1/example-lib-1": [
         "libs/example-lib/src"
       ],
-      "@javiersfalp/template-module-nodejs/*": [
+      "example-lib-1/example-lib-1/*": [
         "libs/example-lib/src/*"
       ]
     }

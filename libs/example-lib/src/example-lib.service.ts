@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ExamplelibService {
-  scopedGreet(): string {
-    return 'This is scoped example message'; 
+  unScopedGreet(): string {
+    return 'This is unscoped example message'; 
   }
 }
