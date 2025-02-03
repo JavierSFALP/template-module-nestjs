@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      ['*']
+      - '*'
 permissions:
   contents: read # for checkout
 jobs:
