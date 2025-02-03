@@ -43,7 +43,6 @@
     "dotenv": "^16.4.7",
     "example-lib": "^0.1.0",
     "example-lib-1": "^0.0.4",
-    "@javiersfalp/template-module-nodejs-local": "^1.0.0",
     "mega-test-5000": "^1.2.1",
     "mega-test-5002": "^1.2.1",
     "reflect-metadata": "^0.2.0",
