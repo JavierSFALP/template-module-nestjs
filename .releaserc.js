@@ -1,6 +1,5 @@
 
 function getLocalConfig() {
-  console.log('en local')
   return  [
     [
       '@semantic-release/github',
@@ -9,7 +8,6 @@ function getLocalConfig() {
 }
 
 function getCIConfig() {
-  console.log('en ci')
   return [
     [
       '@semantic-release/npm',
@@ -29,7 +27,6 @@ function getCIConfig() {
 }
 
 function isDryRun() {
-console.log(process.argv.includes('--no-ci'))
   return process.argv.includes('--no-ci');
 }
 
@@ -37,8 +34,12 @@ console.log(process.argv.includes('--no-ci'))
 module.exports = {
   branches: [
     'feature/changelog-docs',
-    'branch-1.0.0.',
-    'main'
+    '+([0-9])?(.{+([0-9]),x}).x',
+    'main', 
+    'next', 
+    'next-major', 
+    {name: 'beta', prerelease: true}, 
+    {name: 'alpha', prerelease: true}
   ],
   plugins: [
     [

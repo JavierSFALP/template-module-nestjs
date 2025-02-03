@@ -7,6 +7,10 @@ export class AppController {
 
   @Get()
   greet(): string {
-    return this.appService.greet();
+    const localGreet = this.appService.greet();
+    const scopedGreet = this.appService.packageScopedGreet();
+    const noScopedGreet = this.appService.packageNoScopedGreet();
+    const message = `Local: ${localGreet} - Scoped: ${scopedGreet} - No Scoped: ${noScopedGreet}`;
+    return message;
   }
 }

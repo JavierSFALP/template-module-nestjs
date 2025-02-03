@@ -3,13 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - main
-      - next
-      - beta
-      - develop
-      - "*.x"
-      - branch-1.0.0
-      - feature/*
+      ['*']
 permissions:
   contents: read # for checkout
 jobs:
@@ -30,12 +24,11 @@ jobs:
         with:
           cache: npm
           node-version: '20.x'
-          
+
       - run: npm ci
       - run: npm audit signatures
       - run: npm run build
-      # pinned version updated automatically by Renovate.
-      # details at https://semantic-release.gitbook.io/semantic-release/usage/installation#global-installation
+      - run: npm test
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
