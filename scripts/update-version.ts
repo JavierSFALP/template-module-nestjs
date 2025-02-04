@@ -1,4 +1,3 @@
-// filepath: /c:/Users/administradorlocal/Desktop/Trabajo/template-module-nestjs-1/template-module-nestjs/scripts/update-version.ts
 import { exec } from 'child_process';
 import { promises as fs } from 'fs';
 import * as path from 'path';
@@ -9,13 +8,20 @@ interface PackageJson {
 }
 
 const packageJsonPath = path.resolve(__dirname, '../package.json');
+let packageJson: PackageJson;
+
+// Function to get the package name from package.json
+async function getPackageName(): Promise<string> {
+  packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
+  return packageJson.name;
+}
 
 // Function to get the latest version from npm
 function getLatestVersion(packageName: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    exec(`npm dist-tags ls ${packageName}`, (error, stdout, stderr) => {
+  return new Promise((resolve) => {
+    exec(`npm dist-tags ls ${packageName}`, (error, stdout) => {
       if (error) {
-        reject(`Error: ${stderr}`);
+        resolve('1.0.0'); // Default version if error occurs
         return;
       }
       const lines = stdout.split('\n');
@@ -24,14 +30,14 @@ function getLatestVersion(packageName: string): Promise<string> {
         const latestVersion = latestLine.split(':')[1].trim();
         resolve(latestVersion);
       } else {
-        reject('Latest version not found');
+        resolve('1.0.0'); // Default version if latest version not found
       }
     });
   });
 }
 
 // Function to update the package.json file
-async function updatePackageJson(version: string, packageJson: PackageJson): Promise<void> {
+async function updatePackageJson(version: string): Promise<void> {
   packageJson.version = version;
   await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2));
   console.log(`Updated package.json to version ${version}`);
@@ -40,9 +46,9 @@ async function updatePackageJson(version: string, packageJson: PackageJson): Pro
 // Main function to get the version and update package.json
 async function main(): Promise<void> {
   try {
-    const packageJson: PackageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'));
-    const latestVersion = await getLatestVersion(packageJson.name);
-    await updatePackageJson(latestVersion, packageJson);
+    const packageName = await getPackageName();
+    const latestVersion = await getLatestVersion(packageName);
+    await updatePackageJson(latestVersion);
   } catch (error) {
     console.error(error);
   }
