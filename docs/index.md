@@ -57,98 +57,62 @@ hero:
 
   Esta herramienta permite mantener un changelog actualizado y gestionar el versionado semántico de manera automática, facilitando el proceso de lanzamiento de nuevas versiones.
 
-# Publicar un Módulo de NestJS como una libreria
+  La configuracion de esta herramienta se encuentra en el archivo `.releaserc.js`, este contempla configuracion para ambiente local y CI.
+
+  Para más detalles sobre los plugin de semantic-release, puedes consultar la documentación oficial.
+
+## Publicar un Módulo de NestJS como una libreria
 
 Para publicar un módulo de NestJS como una libreria implica varios pasos, incluyendo:
  - Configuración de módulo
  - Preparar módulo para distribución
  - Publicarlo en un registro de paquetes como npm
 
-## Paso 1: Crear Módulo de NestJS
+### Paso 1: Crear Módulo de NestJS
 
-1. Configurar nuevo proyecto NestJS:
+1. Crear módulo tipo lib o podificar el de ejemplo:
 
->nest new mi-libreria-nestjs
->cd mi-libreria-nestjs
+> nest g lib <nombre del módulo>
 
-2. Generar módulo:
+2. Agregar Servicios y Controladores: Implementa la funcionalidad que deseas en tu módulo agregando servicios, controladores y cualquier otro componente necesario.
 
->nest generate module mi-modulo
+* Tambien es posible crear un módulo de NestJS con el comando `nest g mod <nombre del módulo>` seleccionando src. para publicarlo es necesario tulizar el comando: `npm run build:mod --name=<module-name>`
 
-3. Agregar Servicios y Controladores: Implementa la funcionalidad que deseas en tu módulo agregando servicios, controladores y cualquier otro componente necesario.
+### Paso 2: Preparar modulo para Publicación
 
-## Paso 2: Preparar modulo para Publicación
+1. Modificar Archivo `package.json` del  directorio raíz cambiando:
 
-1. Crear Archivo `package.json`: Asegúrate de que tu módulo tenga un archivo `package.json` en el directorio raíz. Si no tienes uno, puedes crearlo usando:
+  - name: El nombre de tu libreria (por ejemplo, mi-libreria-nestjs) si posee scope debe partir con @<scope>/nombre.
+  - version: 1.0.0.
 
->npm init
 
-Completa los detalles necesarios, como:
+### Paso 3: Construir libreria
 
-  - name: El nombre de tu libreria (por ejemplo, mi-libreria-nestjs).
-  - version: La versión de tu libreria (por ejemplo, 1.0.0).
-  - main: El punto de entrada de tu libreria (por ejemplo, dist/mi-modulo.js).
-  - types: El archivo de definición de TypeScript (por ejemplo, dist/mi-modulo.d.ts).
-
-2. Agrega Scripts de Construcción: En tu package.json, agrega scripts para construir tu libreria:
-
-```json
-"scripts": {
-  "build": "tsc",
-  "prepublish": "npm run build"
-}
-```
-
-3. Crea un Archivo `tsconfig.json`: Crear archivo de configuración de TypeScript para compilar tu código TypeScript en directorio raiz. Ejemplo básico:
-
-```json
-{
-  "compilerOptions": {
-    "target": "ES2017",
-    "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "declaration": true,
-    "strict": true,
-    "esModuleInterop": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
-}
-```
-
-## Paso 3: Construir libreria
-
-Ejecutar el comando de construcción para compilar código TypeScript en JavaScript:
+Ejecutar el comando de construcción para compilar:
 
 >npm run build
 
-## Paso 4: Publicar libreria
+### Paso 4: Publicar libreria
 
 Iniciar sesión en npm:
 
 >npm login
 
-Publicar libreria: Usa el siguiente comando para publicar tu libreria en npm:
+Si la  libreria no existe en npm, crearla con el comando:
 
->npm publish
+>npm run set:registry
 
-Para publicar una versión previa (por ejemplo, 1.0.0-alpha.0), puedes usar:
+REGISTRY_SCOPE y REGISTRY_URL deben estar configurados en archivo `.env`
 
->npm publish --tag alpha
-
-## Paso 5: Usar libreria
+### Paso 5: Usar libreria
 
 Una vez publicada, puedes instalar tu libreria en otros proyectos de NestJS usando:
 
 >npm install mi-libreria-nestjs
 
+## Pruebas
 
-## Consejos Adicionales
-
- - Versionado: Sigue el versionado semántico (semantic-release) para tu libreria. Actualiza la versión en package.json antes de cada publicación.
- - Documentación: Proporciona documentación clara en un archivo README.md para ayudar a los usuarios a entender cómo usar tu libreria.
- - Pruebas: Asegúrate de que tu libreria esté bien probada antes de publicarla. Considera usar un marco de pruebas como Jest.
- - Integración Continua: Configura pipelines de CI/CD para automatizar los procesos de prueba y publicación.
-
-Siguiendo estos pasos, podrás publicar con éxito tu módulo de NestJS como una libreria, haciéndola disponible para que otros la utilicen en sus aplicaciones.
+# A considerar
+- La publicacion de la libreria se gestiona a traves de semantic-release, de acuerdo a las branch y los commits, por lo que no se recomienda publicar manualmente
+- Para realizar un build limpio reconocible por el flujo automatizado, es necesario que la libreria sea unica dentro de la carpeta libs
+- La actualizacion de la version de realiza automaticamente por semantic release pero no se ve reflejada ya el verdadero versionado es realizado por CI para obtener la version correcta utilizar script: `npm run get:version`
