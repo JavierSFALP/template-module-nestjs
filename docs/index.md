@@ -59,7 +59,9 @@ hero:
 
   La configuracion de esta herramienta se encuentra en el archivo `.releaserc.js`, este contempla configuracion para ambiente local y CI.
 
-  Para más detalles sobre los plugin de semantic-release, puedes consultar la documentación oficial.
+  Es posible realizar una simulación del proceso de release, permitiéndo verificar que todo esté configurado correctamente sin realizar cambios reales
+
+  Para más detalles sobre los plugin de semantic-release, puedes consultar la [documentación oficial](https://semantic-release.gitbook.io/semantic-release/).
 
 ## Publicar un Módulo de NestJS como una libreria
 
@@ -85,7 +87,6 @@ Para publicar un módulo de NestJS como una libreria implica varios pasos, inclu
   - name: El nombre de tu libreria (por ejemplo, mi-libreria-nestjs) si posee scope debe partir con @<scope>/nombre.
   - version: 1.0.0.
 
-
 ### Paso 3: Construir libreria
 
 Ejecutar el comando de construcción para compilar:
@@ -94,15 +95,10 @@ Ejecutar el comando de construcción para compilar:
 
 ### Paso 4: Publicar libreria
 
-Iniciar sesión en npm:
+Realizar `git push`, semantic release se encargara de realizar el versionado y publicación en npm.
 
->npm login
+Recuerda `REGISTRY_SCOPE`, `REGISTRY_URL`, `REPOSITORY_URL`, `NPM_TOKEN` y `GITHUB_TOKEN` deben estar configurados en archivo `.env`
 
-Si la  libreria no existe en npm, crearla con el comando:
-
->npm run set:registry
-
-REGISTRY_SCOPE y REGISTRY_URL deben estar configurados en archivo `.env`
 
 ### Paso 5: Usar libreria
 
@@ -114,5 +110,5 @@ Una vez publicada, puedes instalar tu libreria en otros proyectos de NestJS usan
 
 # A considerar
 - La publicacion de la libreria se gestiona a traves de semantic-release, de acuerdo a las branch y los commits, por lo que no se recomienda publicar manualmente
-- Para realizar un build limpio reconocible por el flujo automatizado, es necesario que la libreria sea unica dentro de la carpeta libs
+- Para realizar un build limpio reconocible por el flujo automatizado de CI, es necesario que la libreria sea unica dentro de la carpeta libs
 - La actualizacion de la version de realiza automaticamente por semantic release pero no se ve reflejada ya el verdadero versionado es realizado por CI para obtener la version correcta utilizar script: `npm run get:version`
