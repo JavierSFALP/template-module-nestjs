@@ -33,7 +33,7 @@ function isDryRun() {
 
 // eslint-disable-next-line no-undef
 module.exports = {
-  branches: [
+  branches: isDryRun() ? [
     'feature/changelog-docs',
     '+([0-9])?(.{+([0-9]),x}).x',
     'main', 
@@ -41,7 +41,7 @@ module.exports = {
     'next-major', 
     {name: 'beta', prerelease: true}, 
     {name: 'alpha', prerelease: true}
-  ],
+  ] : ['main'],
   plugins: [
     [
       '@semantic-release/commit-analyzer',
