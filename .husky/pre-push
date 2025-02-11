@@ -9,5 +9,5 @@ export $(grep -v '^#' .env | xargs)
 # If tests pass, run semantic-release
 if [ $? -eq 0 ]; then
   npm run get:version
-  HUSKY=0 npx semantic-release --no-ci --dry-run --debug
+  HUSKY=0 npx semantic-release --no-ci --debug
 fi
