@@ -63,6 +63,8 @@ hero:
 
   Para más detalles sobre los plugin de semantic-release, puedes consultar la [documentación oficial](https://semantic-release.gitbook.io/semantic-release/).
 
+  * Al realizar merge a ramas que utilizen semantic-release se recomienda utilizar la opcion `--no-ff`
+
 ## Publicar un Módulo de NestJS como una libreria
 
 Para publicar un módulo de NestJS como una libreria implica varios pasos, incluyendo:
