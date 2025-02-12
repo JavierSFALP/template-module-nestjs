@@ -1,5 +1,5 @@
 #!/bin/sh
-echo -e "\n testing \n"
+echo -e "\n Testing \n"
 npm test
 
 # Load environment variables from .env file
