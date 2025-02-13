@@ -1,31 +1,3 @@
-
-function getLocalConfig() {
-  return  [
-    [
-      '@semantic-release/github',
-    ]
-  ]
-}
-
-function getCIConfig() {
-  return [
-    [
-      '@semantic-release/npm',
-      {
-        npmPublish: true,
-        pkgRoot: './dist',
-        tarballDir: 'pkg'
-      },
-    ],
-    [
-			'@semantic-release/github',
-			{
-				assets: ['package.json', 'pkg/*.tgz', 'release/CHANGELOG.md'],
-			}
-		],
-  ]
-}
-
 function isDryRun() {
   // eslint-disable-next-line no-undef
   return process.argv.includes('--no-ci');
@@ -34,11 +6,8 @@ function isDryRun() {
 // eslint-disable-next-line no-undef
 module.exports = {
   branches: [
-    'feature/changelog-docs',
-    '+([0-9])?(.{+([0-9]),x}).x',
-    'main', 
-    'next', 
-    'next-major', 
+    'main',
+    {name: 'next', prerelease: true},
     {name: 'beta', prerelease: true}, 
     {name: 'alpha', prerelease: true}
   ],
@@ -61,7 +30,23 @@ module.exports = {
         changelogFile: 'release/CHANGELOG.md',
       },
     ],
-    ...isDryRun() ? getLocalConfig() : getCIConfig()
+    ...(process.env.GITHUB_REF_NAME === 'main' ? [
+      ['@semantic-release/npm', {
+        npmPublish: true,
+        pkgRoot: './dist',
+        tarballDir: 'pkg'
+      }]
+    ] : []),
+    [
+			'@semantic-release/github',
+			{
+				assets: [
+          'package.json', 
+          'pkg/*.tgz', 
+          'release/CHANGELOG.md'
+        ],
+			}
+		],
   ],
 }
 
