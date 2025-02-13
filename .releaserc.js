@@ -1,12 +1,8 @@
-function isDryRun() {
-  // eslint-disable-next-line no-undef
-  return process.argv.includes('--no-ci');
-}
-
 // eslint-disable-next-line no-undef
 module.exports = {
   branches: [
     'main',
+    'develop',
     {name: 'next', prerelease: true},
     {name: 'beta', prerelease: true}, 
     {name: 'alpha', prerelease: true}
