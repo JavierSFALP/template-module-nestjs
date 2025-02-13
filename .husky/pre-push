@@ -3,6 +3,6 @@ echo -e "\n Testing \n"
 npm test
 
 # If tests pass, run semantic-release
-if [ $? -eq 0 ]; then
-  npm run get:version
-fi
+# if [ $? -eq 0 ]; then
+#   npm run get:version
+# fi
