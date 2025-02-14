@@ -2,5 +2,6 @@
 *
 
 # Include the dist folder
-!pkgs
-!pkgs/**
+!dist
+!dist/**
+!package.json

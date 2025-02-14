@@ -1,5 +1,5 @@
 #!/bin/sh
-echo -e "\n testing \n"
+echo -e "\n Testing \n"
 npm test
 
 # Load environment variables from .env file
@@ -7,6 +7,6 @@ export $(grep -v '^#' .env | xargs)
 
 
 # If tests pass, run semantic-release
-if [ $? -eq 0 ]; then
-  HUSKY=0 npx semantic-release --no-ci
-fi
+# if [ $? -eq 0 ]; then
+#   npm run get:version
+# fi

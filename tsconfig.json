@@ -6,28 +6,29 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "strict": true,
+    "esModuleInterop": true,
+    "target": "ES6",
     "sourceMap": true,
     "outDir": "./pkgs",
     "baseUrl": "./",
     "incremental": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "template-module-nestjs/example-lib": [
+      "@testfalp/template-module-nodejs-local": [
         "libs/example-lib/src"
       ],
-      "template-module-nestjs/example-lib/*": [
+      "@testfalp/template-module-nodejs-local/*": [
         "libs/example-lib/src/*"
       ]
     }
   },
   "include": [
-    "libs/**/*"
-    // "src/**/*"
+    "libs/**/*",
   ]
 }

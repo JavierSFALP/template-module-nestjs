@@ -43,9 +43,11 @@ console.log(process.argv.includes('--no-ci'))
 // eslint-disable-next-line no-undef
 module.exports = {
   branches: [
-    'feature/changelog-docs',
-    'branch-1.0.0.',
-    'main'
+    'main',
+    'develop',
+    {name: 'next', prerelease: true},
+    {name: 'beta', prerelease: true}, 
+    {name: 'alpha', prerelease: true}
   ],
   plugins: [
     [
@@ -66,6 +68,27 @@ module.exports = {
         changelogFile: 'release/CHANGELOG.md',
       },
     ],
+<<<<<<< HEAD
     ...isDryRun() ? getLocalConfig() : getCIConfig()
+=======
+    ...(process.env.GITHUB_REF_NAME === 'main' ? [
+      ['@semantic-release/npm', {
+        npmPublish: true,
+        pkgRoot: './dist',
+        tarballDir: 'pkg'
+      }]
+    ] : []),
+    [
+			'@semantic-release/github',
+			{
+				assets: [
+          'package.json', 
+          'pkg/*.tgz', 
+          'release/CHANGELOG.md'
+        ],
+			}
+		],
+>>>>>>> alpha
   ],
 }
+
