@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "target": "ES6",
     "sourceMap": true,
-    "outDir": "./pkgs",
+    "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": false,
