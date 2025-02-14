@@ -22,6 +22,7 @@ function getLatestVersion(packageName: string): Promise<string> {
     exec(`npm dist-tags ls ${packageName}`, (error, stdout) => {
       if (error) {
         resolve('1.0.0'); // Default version if error occurs
+        console.log('error:', error);
         return;
       }
       const lines = stdout.split('\n');

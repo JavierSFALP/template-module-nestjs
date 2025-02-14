@@ -1,9 +1,9 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
-layout: home
+layout: doc
 
-hero:
-  name: "nestjs-release-base"
+guide:
+  name: "template-module-nodejs"
   text: "Publicación de modulos como librerias"
 ---
 
