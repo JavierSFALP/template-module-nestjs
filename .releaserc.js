@@ -26,13 +26,14 @@ module.exports = {
         changelogFile: 'release/CHANGELOG.md',
       },
     ],
-    ...(process.env.GITHUB_REF_NAME === 'main' ? [
-      ['@semantic-release/npm', {
-        npmPublish: true,
+    [
+      '@semantic-release/npm', 
+      {
+        npmPublish: process.env.GITHUB_REF_NAME === 'main' ? true : false,
         pkgRoot: './dist',
         tarballDir: 'pkg'
-      }]
-    ] : []),
+      }
+    ],
     [
 			'@semantic-release/github',
 			{
