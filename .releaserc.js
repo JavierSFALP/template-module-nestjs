@@ -1,45 +1,3 @@
-
-function getLocalConfig() {
-  console.log('en local')
-  return  [
-    [
-      '@semantic-release/npm',
-      {
-        npmPublish: false,
-      },
-    ],
-    [
-      '@semantic-release/github',
-    ]
-  ]
-}
-
-function getCIConfig() {
-  console.log('en ci')
-  return [
-    [
-      '@semantic-release/npm',
-      {
-        npmPublish: false,
-        tarballDir: 'pkgs'
-      },
-    ],
-    [
-			'@semantic-release/github',
-			{
-				assets: ['pkgs/*.tgz', 'release/CHANGELOG.md',
-          {path: 'pkgs/index.js', name: '${LIBRARY_NAME}-${nextRelease.gitTag}', label: '${LIBRARY_NAME} (${nextRelease.gitTag}) distribution'}
-        ]
-			}
-		],
-  ]
-}
-
-function isDryRun() {
-console.log(process.argv.includes('--no-ci'))
-  return process.argv.includes('--no-ci');
-}
-
 // eslint-disable-next-line no-undef
 module.exports = {
   branches: [
@@ -68,9 +26,6 @@ module.exports = {
         changelogFile: 'release/CHANGELOG.md',
       },
     ],
-<<<<<<< HEAD
-    ...isDryRun() ? getLocalConfig() : getCIConfig()
-=======
     ...(process.env.GITHUB_REF_NAME === 'main' ? [
       ['@semantic-release/npm', {
         npmPublish: true,
@@ -88,7 +43,6 @@ module.exports = {
         ],
 			}
 		],
->>>>>>> alpha
   ],
 }
 
