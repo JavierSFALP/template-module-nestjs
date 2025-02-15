@@ -1,3 +1,14 @@
+function shouldPublish(branchName) {
+  // Main branch always publishes
+  if (branchName === 'main') return true;
+  
+  // Check if prerelease publishing is enabled via env
+  const prereleasesEnabled = process.env.PUBLISH_PRERELEASES;
+  const isPrerelease = ['develop', 'alpha', 'beta', 'next'].includes(branchName);
+  
+  return isPrerelease && prereleasesEnabled;
+}
+
 // eslint-disable-next-line no-undef
 module.exports = {
   branches: [
@@ -29,7 +40,7 @@ module.exports = {
     [
       '@semantic-release/npm', 
       {
-        npmPublish: process.env.GITHUB_REF_NAME === 'main' ? true : false,
+        npmPublish: shouldPublish(process.env.GITHUB_REF_NAME),
         pkgRoot: './dist',
         tarballDir: 'pkg'
       }
