@@ -16,58 +16,58 @@ guide:
 
 ### Husky
   
-  Husky es una herramienta que permite gestionar hooks de Git, lo que significa que puede ejecutar scripts en diferentes momentos del ciclo de vida de Git, como antes de hacer un commit o un push.
+Husky es una herramienta que permite gestionar hooks de Git, lo que significa que puede ejecutar scripts en diferentes momentos del ciclo de vida de Git, como antes de hacer un commit o un push.
 
-  Se utiliza para asegurar que el código cumple con ciertas reglas antes de ser enviado al repositorio, como ejecutar pruebas o linters permitiendo automatizar tareas y mejorar la calidad del codigo.
+Se utiliza para asegurar que el código cumple con ciertas reglas antes de ser enviado al repositorio, como ejecutar pruebas o linters permitiendo automatizar tareas y mejorar la calidad del codigo.
 
-  * Se recomienda utilizar el comando `npm run prepare` despues de cada instalacion
+* Se recomienda utilizar el comando `npm run prepare` despues de cada instalacion
 
 #### Uso
 
-  Para utilizar husky es necesario saber que husky realiza sus procedimientos a traves de archivos con los mismos nombres de los hooks de git.
-  
-  ![An image](./husky_1.png#center)
+Para utilizar husky es necesario saber que husky realiza sus procedimientos a traves de archivos con los mismos nombres de los hooks de git.
 
-  
-  - Por ejemplo, para ejecutar un script antes de hacer un commit, se debe crear un archivo de manera manual o con el comando `npx husky .husky/<hook> "<acción a realizar> npx test"` con el nombre pre-commit, estos estaran disponibles en la carpeta `.husky/`. Normalmente los scripts contendran comandos `npm run` o `npx`, pero tambien se puede utilizar POSIX shell.
+![An image](./husky_1.png#center)
 
-  - Los hooks de Husky se pueden probar agregando `exit 1` al final del archivo a testear, esto hara que el hook falle y se muestre un mensaje de error.
+
+- Por ejemplo, para ejecutar un script antes de hacer un commit, se debe crear un archivo de manera manual o con el comando `npx husky .husky/<hook> "<acción a realizar> npx test"` con el nombre pre-commit, estos estaran disponibles en la carpeta `.husky/`. Normalmente los scripts contendran comandos `npm run` o `npx`, pero tambien se puede utilizar POSIX shell.
+
+- Los hooks de Husky se pueden probar agregando `exit 1` al final del archivo a testear, esto hara que el hook falle y se muestre un mensaje de error.
 
 ### Commitizen
- 
- Commitizen es una herramienta que ayuda a crear mensajes de commit de manera estructurada y amigable, guiando a los desarrolladores a seguir convenciones específicas.
 
- Esta libreria facilita la creación de mensajes de commit claros y consistentes, permitiendo estandarizar y facilitar la creacion de comits, lo que es especialmente útil en proyectos colaborativos.
+Commitizen es una herramienta que ayuda a crear mensajes de commit de manera estructurada y amigable, guiando a los desarrolladores a seguir convenciones específicas.
 
- #### Uso
+Esta libreria facilita la creación de mensajes de commit claros y consistentes, permitiendo estandarizar y facilitar la creacion de comits, lo que es especialmente útil en proyectos colaborativos.
 
-  Al momento de realizar un comit, se debe:
+#### Uso
 
-  - Reemplazar comando `git commit` por `npm run cm`. Esto permitira desplegar la interfaz de commitizen la cual te guyiara paso a paso para crear un commit adecuado.
+Al momento de realizar un comit, se debe:
 
-  ![An image](./commitizen_1.png)
+- Reemplazar comando `git commit` por `npm run cm`. Esto permitira desplegar la interfaz de commitizen la cual te guyiara paso a paso para crear un commit adecuado.
 
-  - Selecciona el tipo de cambio que deseas realizar (por ejemplo, "feat" para una nueva funcionalidad) y sigue los pasos indicados Commitizen te guiará a través del proceso de creación del mensaje de commit, asegurando que el mensaje cumpla con las convenciones establecidas.
+![An image](./commitizen_1.png)
 
-  ![An image](./commitizen_2.png)
+- Selecciona el tipo de cambio que deseas realizar (por ejemplo, "feat" para una nueva funcionalidad) y sigue los pasos indicados Commitizen te guiará a través del proceso de creación del mensaje de commit, asegurando que el mensaje cumpla con las convenciones establecidas.
+
+![An image](./commitizen_2.png)
 
 ### Semantic-release
 
-  Semantic-release es una herramienta que automatiza el versionado y la publicación de paquetes. Utiliza el análisis de los mensajes de commit para determinar el tipo de versión que se debe lanzar (mayor, menor, o parche).
+Semantic-release es una herramienta que automatiza el versionado y la publicación de paquetes. Utiliza el análisis de los mensajes de commit para determinar el tipo de versión que se debe lanzar (mayor, menor, o parche).
 
-  Esta herramienta permite mantener un changelog actualizado y gestionar el versionado semántico de manera automática, facilitando el proceso de lanzamiento de nuevas versiones.
+Esta herramienta permite mantener un changelog actualizado y gestionar el versionado semántico de manera automática, facilitando el proceso de lanzamiento de nuevas versiones.
 
-  La configuracion de esta herramienta se encuentra en el archivo `.releaserc.js`, este contempla configuracion para ambiente local y CI.
+La configuracion de esta herramienta se encuentra en el archivo `.releaserc.js`, este contempla configuracion para ambiente CI.
 
-  Es posible realizar una simulación del proceso de release, permitiéndo verificar que todo esté configurado correctamente sin realizar cambios reales utilizando el argumento `--dry-run`
+Es posible realizar una simulación del proceso de release, permitiéndo verificar que todo esté configurado correctamente sin realizar cambios reales utilizando el comando `npm run release:debug`
 
-  Por otro lado, esta herramienta automatiza el flujo de release, basado el la nomeclatura de de ramas, referirse a [documentación de flujo](https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration)
+Por otro lado, esta herramienta automatiza el flujo de release, basado el la nomeclatura de de ramas, referirse a [documentación de flujo](https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration)
 
-  Para más detalles sobre los plugin de semantic-release, puedes consultar la [documentación oficial](https://semantic-release.gitbook.io/semantic-release/).
+Para más detalles sobre los plugin de semantic-release, puedes consultar la [documentación oficial](https://semantic-release.gitbook.io/semantic-release/).
 
-  * Al realizar merge a ramas que utilizen semantic-release se recomienda utilizar la opcion `--no-ff`
+* Al realizar merge a ramas que utilizen semantic-release se recomienda utilizar la opcion `--no-ff`
 
-  * Por defecto, semantic releease esta configurado solo para publicar a npm desde la branc "main", para publicar versiones de prerelese es necesario habilitar la variable de entornro `PUBLISH_PRERELEASES=true`
+* Por defecto, semantic releease esta configurado solo para publicar a npm desde la branc "main", para publicar versiones de prerelese es necesario habilitar la variable de entornro `PUBLISH_PRERELEASES=true`
 
 ## Publicar un Módulo de NestJS como una libreria
 
@@ -80,11 +80,12 @@ Para publicar un módulo de NestJS como una libreria implica varios pasos, inclu
 
 1. Crear módulo tipo lib o podificar el de ejemplo:
 
-> nest g lib <nombre del módulo>
-
+```bash
+nest g lib `<nombre del módulo>`
+```
 2. Agregar Servicios y Controladores: Implementa la funcionalidad que deseas en tu módulo agregando servicios, controladores y cualquier otro componente necesario.
 
-* Tambien es posible crear un módulo de NestJS con el comando `nest g mod <nombre del módulo>` seleccionando src. para publicarlo es necesario tulizar el comando: `npm run build:mod --name=<module-name>`
+* Tambien es posible crear un módulo de NestJS con el comando `nest g mod <nombre del módulo>` seleccionando src. Para transformarmlo en un modulo publicable, es necesario tulizar el comando: `npm run build:mod --name=<module-name>`
 
 ### Paso 2: Preparar modulo para Publicación
 
