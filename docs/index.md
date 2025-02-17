@@ -59,7 +59,9 @@ guide:
 
   La configuracion de esta herramienta se encuentra en el archivo `.releaserc.js`, este contempla configuracion para ambiente local y CI.
 
-  Es posible realizar una simulación del proceso de release, permitiéndo verificar que todo esté configurado correctamente sin realizar cambios reales
+  Es posible realizar una simulación del proceso de release, permitiéndo verificar que todo esté configurado correctamente sin realizar cambios reales utilizando el argumento `--dry-run`
+
+  Por otro lado, esta herramienta automatiza el flujo de release, basado el la nomeclatura de de ramas, referirse a [documentación de flujo](https://semantic-release.gitbook.io/semantic-release/usage/workflow-configuration)
 
   Para más detalles sobre los plugin de semantic-release, puedes consultar la [documentación oficial](https://semantic-release.gitbook.io/semantic-release/).
 
@@ -88,7 +90,7 @@ Para publicar un módulo de NestJS como una libreria implica varios pasos, inclu
 
 1. Modificar Archivo `package.json` del  directorio raíz cambiando:
 
-  - name: El nombre de tu libreria (por ejemplo, mi-libreria-nestjs) si posee scope debe partir con @<scope>/nombre.
+  - name: El nombre de tu libreria (por ejemplo, mi-libreria-nestjs) si posee scope debe partir con @<scope>/<library-name>.
   - version: 1.0.0.
 
 ### Paso 3: Construir libreria
@@ -97,22 +99,68 @@ Ejecutar el comando de construcción para compilar:
 
 >npm run build
 
-### Paso 4: Publicar libreria
+Una vez compilado es posible probar la libreria de manera local.
 
-Realizar `git push`, semantic release se encargara de realizar el versionado y publicación en npm.
+### Paso 4: Gestión de Ramas y Versionado
 
-Recuerda `REGISTRY_SCOPE`, `REGISTRY_URL`, `REPOSITORY_URL`, `NPM_TOKEN` y `GITHUB_TOKEN` deben estar configurados en archivo `.env`
+El proyecto utiliza semantic-release para gestionar versiones siguiendo el siguiente flujo de ramas:
 
+- `alpha`: Versiones de desarrollo temprano (ej: 1.0.0-alpha.1)
+- `beta`: Versiones de prueba (ej: 1.0.0-beta.1)
+- `next`: Versiones de pre-lanzamiento (ej: 1.0.0-next.1)
+- `main`: Versiones de producción (ej: 1.0.0)
 
-### Paso 5: Usar libreria
+#### Flujo de trabajo:
+
+1. Desarrollo en rama alpha:
+```bash
+git checkout -b alpha
+git commit -m "feat: nueva característica"
+git push origin alpha
+# Genera version 1.0.0-alpha.1
+git checkout -b beta
+git merge alpha
+git push origin beta
+# Genera version 1.0.0-beta.1
+git checkout -b next
+git merge beta
+git push origin next
+# Genera version 1.0.0-next.1
+git checkout main
+git merge next
+git push origin main
+# Publica version 1.0.0 en npm
+```
+Solo la rama main publicará el paquete en npm. Las otras ramas generarán versiones pero no publicarán.
+
+### Paso 5: Publicar libreria
+
+1. Configurar, en caso de que no lo hayas hecho las variables de entorno en .env:
+- `REGISTRY_SCOPE`
+- `REGISTRY_URL`
+- `REPOSITORY_URL`
+- `NPM_TOKEN`
+
+Publicar utilizando git push para que se vaya por el flujo de semantic release `git push`, semantic release se encargara de realizar el versionado y publicación en npm.
+
+2. Realiza git push a la rama correspondiente:
+
+ - Para testing: push a alpha o beta
+ - Para pre-release: push a next
+ - Para producción: push a main
+
+semantic-release se encargará del versionado y publicación según la rama.
+Para verificar la versión actual:
+
+>npm run get:version
+
+### Paso 6: Usar libreria
 
 Una vez publicada, puedes instalar tu libreria en otros proyectos de NestJS usando:
 
 >npm install mi-libreria-nestjs
 
-## Pruebas
-
 # A considerar
 - La publicacion de la libreria se gestiona a traves de semantic-release, de acuerdo a las branch y los commits, por lo que no se recomienda publicar manualmente
 - Para realizar un build limpio reconocible por el flujo automatizado de CI, es necesario que la libreria sea unica dentro de la carpeta libs
-- La actualizacion de la version de realiza automaticamente por semantic release pero no se ve reflejada ya el verdadero versionado es realizado por CI para obtener la version correcta utilizar script: `npm run get:version`
+- La actualizacion de la version de realiza automaticamente por semantic release pero no se ve reflejada ya que el verdadero versionado es realizado por CI para obtener la version correcta utilizar script: `npm run get:version`
