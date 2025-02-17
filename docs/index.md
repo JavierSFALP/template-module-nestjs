@@ -97,7 +97,9 @@ Para publicar un módulo de NestJS como una libreria implica varios pasos, inclu
 
 Ejecutar el comando de construcción para compilar:
 
->npm run build
+```bash
+npm run build
+```
 
 Una vez compilado es posible probar la libreria de manera local.
 
@@ -152,13 +154,17 @@ Publicar utilizando git push para que se vaya por el flujo de semantic release `
 semantic-release se encargará del versionado y publicación según la rama.
 Para verificar la versión actual:
 
->npm run get:version
+```bash
+npm run get:version
+```
 
 ### Paso 6: Usar libreria
 
 Una vez publicada, puedes instalar tu libreria en otros proyectos de NestJS usando:
 
->npm install mi-libreria-nestjs
+```bash
+npm install mi-libreria-nestjs
+```
 
 # A considerar
 - La publicacion de la libreria se gestiona a traves de semantic-release, de acuerdo a las branch y los commits, por lo que no se recomienda publicar manualmente
