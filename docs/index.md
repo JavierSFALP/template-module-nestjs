@@ -65,6 +65,8 @@ guide:
 
   * Al realizar merge a ramas que utilizen semantic-release se recomienda utilizar la opcion `--no-ff`
 
+  * Por defecto, semantic releease esta configurado solo para publicar a npm desde la branc "main", para publicar versiones de prerelese es necesario habilitar la variable de entornro `PUBLISH_PRERELEASES=true`
+
 ## Publicar un Módulo de NestJS como una libreria
 
 Para publicar un módulo de NestJS como una libreria implica varios pasos, incluyendo:
